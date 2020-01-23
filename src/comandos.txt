@@ -1,0 +1,12 @@
+//crear modulo y enrutador
+ng g m modules/pages/rol --routing true
+
+//crear un componente 
+ng g c modules/pages/rol/listar
+
+//crear un servicio
+ng g s modules/services/rol/rol
+
+//crear un modulo
+ng g m modules/pages/usuario
+

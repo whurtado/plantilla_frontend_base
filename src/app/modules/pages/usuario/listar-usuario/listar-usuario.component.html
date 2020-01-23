@@ -1,0 +1,85 @@
+<div>
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Listado de usuarios</h3>
+           <!--<router-link :to="{ name: 'userCreate'}">
+                <a v-if="adminUsuario === true || crearUsuario ===true" class="btn btn-primary  pull-right"><i class="fa fa-plus"></i> Crear usuarioss</a>-->
+               <a routerLink="/dashboard/usuario/crearUsuario" class="btn btn-primary  pull-right"><i class="fa fa-plus"></i> Crear usuario</a>
+
+          <!-- </router-link>-->
+
+        </div>
+
+        <div class="box-body">
+
+            <div class="form-group" style="position: relative">
+                <div class="col-md-6">
+                    <div class="input-group" style="display: inline-block;" >
+                        <select class="form-control " >
+                            <option value="name">Nombre</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="input-group" style="display: inline-block;" >
+                        <input type="text"  class="form-control inline" placeholder="Texto a buscar" style="display: inline-block;">
+                    </div>
+                    <div class="input-group" style="display: inline-block;" >
+                        <button type="submit"  class="btn btn-primary inline"><i class="fa fa-search"></i> Buscar</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <table id="example2" class="table table-bordered table-striped table-hover animated fadeIn faster animated fadeIn faster">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Acciones</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{ usuario.name}}</td>
+                        <td>{{ usuario.email}}</td>
+                        <td *ngFor="let rol of usuario.roles">
+                        <span >{{ rol.name }}</span>
+                        </td>
+                        <td>
+                            <!--<router-link :to="{ name: 'userEdit', params: {id : usuario.id }} ">
+                                <a v-if="adminUsuario === true || editarUsuario ===true " href="" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+
+                            </router-link>-->
+
+                            <a routerLink="/dashboard/usuario/editarUsuario/{{usuario.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+
+
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!--<nav>
+                <ul class="pagination">
+                    <li class="page-item" v-if="pagination.current_page > 1">
+                        <a class="page-link" href="#" @click.prevent="cambiarPagina(pagination.current_page - 1,buscar,criterio)">Ant</a>
+                    </li>
+                    <li class="page-item" v-for="page in pagesNumber" :key="page" :class="[page == isActived ? 'active' : '']">
+                        <a class="page-link" href="#" @click.prevent="cambiarPagina(page,buscar,criterio)" v-text="page"></a>
+                    </li>
+                    <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                        <a class="page-link" href="#" @click.prevent="cambiarPagina(pagination.current_page + 1,buscar,criterio)">Sig</a>
+                    </li>
+                </ul>
+            </nav>-->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>

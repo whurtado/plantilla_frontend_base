@@ -1,47 +1,56 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>LTE</a>
+    <a href="#"><b>Inventario</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Ingresa Tus Datos Para Iniciar Session
 
+    </p>
 
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Email" type="email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Password" type="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
+    <form (ngSubmit)="login( f.value )" #f="ngForm">
+
+        <div class="form-group has-feedback">
+          <input class="form-control" placeholder="Email" type="email"  name="email" [(ngModel)]="usuario.email" >
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input class="form-control" placeholder="Password" type="password" name="password" [(ngModel)]="usuario.password" >
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <!-- <div class="col-xs-8">
+            <div class="checkbox icheck">
+              <label>
+                <input type="checkbox"> Remember Me
+              </label>
+            </div>
+          </div>-->
+          <!-- /.col -->
+          <!-- <div class="col-xs-4">
+            <button [routerLink]="'/members'" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>-->
+          <!-- /.col -->
+
+          <div class="col-xs-12">
+            <button  type="submit" class="btn btn-lg btn-primary btn-block" >Ingresar</button>
           </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button [routerLink]="'/members'" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
+  </form>
 
 
-    <div class="social-auth-links text-center">
+
+    <!--<div class="social-auth-links text-center">
       <p>- OR -</p>
       <a class="btn btn-block btn-social btn-facebook btn-flat" href="#"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
       <a class="btn btn-block btn-social btn-google btn-flat" href="#"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
-    </div>
+    </div>-->
     <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
-    <a [routerLink]="'/login/register'" class="text-center">Register a new membership</a>
+    <!--<a href="#">I forgot my password</a><br>
+    <a [routerLink]="'/login/register'" class="text-center">Register a new membership</a>-->
 
   </div>
   <!-- /.login-box-body -->

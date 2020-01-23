@@ -1,0 +1,155 @@
+<div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+
+            <div class="box box-primary animated fadeIn faster animated fadeIn faster">
+                <div class="box-header">
+                        <a routerLink="/dashboard/usuario/listarUsuario" class="btn btn-primary  pull-right"><i class="fa fa-pencil"></i> Listado usuarios</a>
+                </div>
+
+                <div class="box-body">
+                    <form (ngSubmit)="crearUsuario( f )" #f="ngForm" autocomplete="off" novalidate="">
+
+                        <!--<div v-if="backend_success" class="alert alert-success text text-center">
+                            <p><strong>Registro Guardado Sactisfactoriamente</strong></p>
+                        </div>
+                        <div   class="alert alert-danger">
+
+                          
+                        </div>-->
+
+
+                        <!-- NOMBRE-->
+                        <div class="form-row " [ngClass]="{'has-error': (nombre.errors?.required || nombre.errors?.minlength) && nombre.touched }">
+                            <div class="form-group col-md-12" >
+                                <div class="col-md-2">
+                                    <label for="nombre" >Nombre</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <input type="text" class="form-control"
+                                     placeholder="Ingrese su Nombre"
+                                    name="nombre"  [(ngModel)]="usuario.nombre"
+                                    minlength="5" required
+                                    #nombre="ngModel">
+
+                                    <div *ngIf="nombre.errors?.required" class="help-block">
+                                        El nombre es requerido
+                                    </div>
+                                    <div *ngIf="nombre.errors?.minlength" class="help-block">
+                                        Por lo menos {{ nombre.errors.minlength.requiredLength}} caracteres.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EMAIL-->
+                        <div class="form-row " [ngClass]="{'has-error': (email.errors?.required || email.errors?.pattern) && email.touched }">
+                            <div class="form-group col-md-12" >
+                                <div class="col-md-2">
+                                    <label>Correo</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <input type="email" class="form-control" placeholder="EIngrese su Correo"
+                                           name="email" [(ngModel)]="usuario.email"
+                                           required 
+                                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                           #email="ngModel">
+
+                                    <div *ngIf="email.errors?.required" class="help-block">
+                                        El email es requerido
+                                    </div>
+                                    <div *ngIf="nombre.errors?.pattern" class="help-block">
+                                        Por lo menos {{ nombre.errors.minlength}} caracteres.
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- PASSWORD-->
+                        <div class="form-row">
+                            <div class="form-group col-md-12" >
+                                <div class="col-md-2">
+                                    <label>Contraseña</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <input type="password" class="form-control"placeholder="Password"
+                                            name="password" [(ngModel)]="usuario.password">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- SEDE -->
+                        <div class="form-row">
+                            <div class="form-group col-md-12" >
+                                <div class="col-md-2">
+                                    <label>Sede</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <select name="sede" class="form-control">
+
+
+                                        <option selected disabled value="0">Seleccionar...</option>
+                                        <option ></option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Rolessss</label>
+                            <div *ngFor="let rol of roles; let i = index" >
+                                <div class="checkbox">
+                                    <label >
+                                        <input value={{rol.name}} type="checkbox"  (change)="checkRoles($event)">
+
+                                    <span>{{ rol.name }}</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Permisos</label>
+                            <div *ngFor="let permiso of permisos; let i = index">
+                                <div class="checkbox">
+                                    <label >
+                                        <input value={{permiso.name}} type="checkbox"   (change)="checkPermisos($event)"   />
+                                    <span>{{ permiso.name }}</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12">
+                            <button [disabled]="!f.valid"  type="submit" 
+                            class="btn btn-lg btn-primary btn-block" >Crear usuario</button>
+                          </div>
+
+                        <!--<div v-if="adminUsuario === true || crearUsuario === true" class="justify-content-end">
+                            <input type="submit" value="Crear usuario" class="btn btn-primary btn-block" >
+                        </div>-->
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

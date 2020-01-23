@@ -1,0 +1,71 @@
+<div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+
+            <div class="box box-primary animated fadeIn faster animated fadeIn faster">
+                <div class="box-header">
+                        <a routerLink="/dashboard/rol/listarRol" class="btn btn-primary  pull-right"><i class="fa fa-pencil"></i> Listado roles</a>
+                </div>
+
+                <div class="box-body">
+                    <form (ngSubmit)="crearRol( f )" #f="ngForm" autocomplete="off" novalidate="">
+
+                        <!-- NOMBRE-->
+                        <div class="form-row " [ngClass]="{'has-error': (nombre.errors?.required || nombre.errors?.minlength) && nombre.touched }">
+                            <div class="form-group col-md-12" >
+                                <div class="col-md-2">
+                                    <label for="nombre" >Nombre</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <input type="text" class="form-control"
+                                     placeholder="Ingrese su Nombre"
+                                    name="nombre"  [(ngModel)]="rol.nombre"
+                                    minlength="5" required
+                                    #nombre="ngModel">
+
+                                    <div *ngIf="nombre.errors?.required" class="help-block">
+                                        El nombre es requerido
+                                    </div>
+                                    <div *ngIf="nombre.errors?.minlength" class="help-block">
+                                        Por lo menos {{ nombre.errors.minlength.requiredLength}} caracteres.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Permisos</label>
+                                <div *ngFor="let permiso of permisos; let i = index">
+                                    <div class="checkbox">
+                                        <label >
+                                            <input value={{permiso.name}} type="checkbox"   (change)="checkPermisos($event)"   />
+                                        <span>{{ permiso.name }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <button [disabled]="!f.valid"  type="submit" 
+                            class="btn btn-lg btn-primary btn-block" >Crear rol</button>
+                          </div>
+
+                        <!--<div v-if="adminUsuario === true || crearRol === true" class="justify-content-end">
+                            <input type="submit" value="Crear rol" class="btn btn-primary btn-block">
+                        </div>-->
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
